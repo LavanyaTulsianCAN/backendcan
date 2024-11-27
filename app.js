@@ -58,7 +58,14 @@ if (cluster.isMaster) {
     //------------------
     //configure app
     //------------------
-    app.use(cors());
+    //app.use(cors());
+    app.use(cors({
+      origin: 'https://canceranonymous.vercel.app/',
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      credentials: true
+    }));
+
+    
     app.use(morgan("dev"));
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
